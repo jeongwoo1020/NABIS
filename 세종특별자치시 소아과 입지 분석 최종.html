@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9778fda2ed9eccbf96251774eed64dbb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+     <div style="
+     position: fixed;
+     bottom: 50px;
+     left: 50px;
+     width: 150px;
+     height: 250px;
+     background-color: white;
+     border:2px solid grey;
+     z-index:9999;
+     font-size:14px;">
+     <h4 style="margin:10px;"><b>Cluster Legend</b></h4>
+     
+     <div style="display: flex; align-items: center; margin: 5px;">
+         <div style="background-color: #440154; width: 20px; height: 20px; margin-right: 10px;"></div>
+         Cluster 0
+     </div>
+     
+     <div style="display: flex; align-items: center; margin: 5px;">
+         <div style="background-color: #3b528b; width: 20px; height: 20px; margin-right: 10px;"></div>
+         Cluster 1
+     </div>
+     
+     <div style="display: flex; align-items: center; margin: 5px;">
+         <div style="background-color: #21918c; width: 20px; height: 20px; margin-right: 10px;"></div>
+         Cluster 2
+     </div>
+     
+     <div style="display: flex; align-items: center; margin: 5px;">
+         <div style="background-color: #5ec962; width: 20px; height: 20px; margin-right: 10px;"></div>
+         Cluster 3
+     </div>
+     
+     <div style="display: flex; align-items: center; margin: 5px;">
+         <div style="background-color: #fde725; width: 20px; height: 20px; margin-right: 10px;"></div>
+         Cluster 4
+     </div>
+     </div>
+    
+            <div class="folium-map" id="map_9778fda2ed9eccbf96251774eed64dbb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9778fda2ed9eccbf96251774eed64dbb = L.map(
+                "map_9778fda2ed9eccbf96251774eed64dbb",
+                {
+                    center: [36.499864364516135, 127.26604769032257],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8de92e2f37d955a3abafad138b2ed22f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_8de92e2f37d955a3abafad138b2ed22f.addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+            var circle_marker_99fa50b29dfea423d470c1cd332e79ed = L.circleMarker(
+                [36.5113991, 127.2484173],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_9f390d2c84e2d8a5c4a6eea96ca26c0b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eda4ca8dfc3d24300e4133a23087eebf = $(`<div id="html_eda4ca8dfc3d24300e4133a23087eebf" style="width: 100.0%; height: 100.0%;">아름드리나무 어린이병원</div>`)[0];
+                popup_9f390d2c84e2d8a5c4a6eea96ca26c0b.setContent(html_eda4ca8dfc3d24300e4133a23087eebf);
+            
+        
+
+        circle_marker_99fa50b29dfea423d470c1cd332e79ed.bindPopup(popup_9f390d2c84e2d8a5c4a6eea96ca26c0b)
+        ;
+
+        
+    
+    
+            var circle_marker_ded26dc28b7ae537fd9cdea35429fcce = L.circleMarker(
+                [36.4801412, 127.3014616],
+                {"bubblingMouseEvents": true, "color": "#5ec962", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5ec962", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_26b5f3609e88fd11920e613123be9a01 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b64fe69049d0f2f2fc2ce4dd53784781 = $(`<div id="html_b64fe69049d0f2f2fc2ce4dd53784781" style="width: 100.0%; height: 100.0%;">코난소아청소년과의원</div>`)[0];
+                popup_26b5f3609e88fd11920e613123be9a01.setContent(html_b64fe69049d0f2f2fc2ce4dd53784781);
+            
+        
+
+        circle_marker_ded26dc28b7ae537fd9cdea35429fcce.bindPopup(popup_26b5f3609e88fd11920e613123be9a01)
+        ;
+
+        
+    
+    
+            var circle_marker_2e99cbeeba98ddd0da3e7ecd74897dc2 = L.circleMarker(
+                [36.5193283, 127.2346596],
+                {"bubblingMouseEvents": true, "color": "#5ec962", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5ec962", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_75a1c7bd1312b41a1f5043bd90d79572 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6e5b92f74fe5f91cf588b32da5174e8f = $(`<div id="html_6e5b92f74fe5f91cf588b32da5174e8f" style="width: 100.0%; height: 100.0%;">꿈담소아청소년과의원</div>`)[0];
+                popup_75a1c7bd1312b41a1f5043bd90d79572.setContent(html_6e5b92f74fe5f91cf588b32da5174e8f);
+            
+        
+
+        circle_marker_2e99cbeeba98ddd0da3e7ecd74897dc2.bindPopup(popup_75a1c7bd1312b41a1f5043bd90d79572)
+        ;
+
+        
+    
+    
+            var circle_marker_acf0e2cdc46c224a4bcadc9e659e8a8b = L.circleMarker(
+                [36.4901712, 127.2594252],
+                {"bubblingMouseEvents": true, "color": "#fde725", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fde725", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_fd57e688cf70f0496a259e703d933ae4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7dce7d0e14ed742b2621a6fa616cc350 = $(`<div id="html_7dce7d0e14ed742b2621a6fa616cc350" style="width: 100.0%; height: 100.0%;">손근형소아청소년과의원</div>`)[0];
+                popup_fd57e688cf70f0496a259e703d933ae4.setContent(html_7dce7d0e14ed742b2621a6fa616cc350);
+            
+        
+
+        circle_marker_acf0e2cdc46c224a4bcadc9e659e8a8b.bindPopup(popup_fd57e688cf70f0496a259e703d933ae4)
+        ;
+
+        
+    
+    
+            var circle_marker_6e18f51410fa087a4205cb415021e760 = L.circleMarker(
+                [36.5288454, 127.2649848],
+                {"bubblingMouseEvents": true, "color": "#5ec962", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5ec962", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_548612ba9192996856e7b5998439ea76 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9ee642ec6877b350ba0a4c4997ce69c7 = $(`<div id="html_9ee642ec6877b350ba0a4c4997ce69c7" style="width: 100.0%; height: 100.0%;">윤빛소아청소년과의원</div>`)[0];
+                popup_548612ba9192996856e7b5998439ea76.setContent(html_9ee642ec6877b350ba0a4c4997ce69c7);
+            
+        
+
+        circle_marker_6e18f51410fa087a4205cb415021e760.bindPopup(popup_548612ba9192996856e7b5998439ea76)
+        ;
+
+        
+    
+    
+            var circle_marker_0c90a00f535f70d63e0c81ac1963bcb0 = L.circleMarker(
+                [36.4852959, 127.299864],
+                {"bubblingMouseEvents": true, "color": "#fde725", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fde725", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_d5c7aca44b01fdfb8bd5481403864b0a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9bde177c00d211ea9bda468b1c66dcc9 = $(`<div id="html_9bde177c00d211ea9bda468b1c66dcc9" style="width: 100.0%; height: 100.0%;">세종꾸러기소아치과의원</div>`)[0];
+                popup_d5c7aca44b01fdfb8bd5481403864b0a.setContent(html_9bde177c00d211ea9bda468b1c66dcc9);
+            
+        
+
+        circle_marker_0c90a00f535f70d63e0c81ac1963bcb0.bindPopup(popup_d5c7aca44b01fdfb8bd5481403864b0a)
+        ;
+
+        
+    
+    
+            var circle_marker_19913d64f278c3bbdababcbe551573b7 = L.circleMarker(
+                [36.4981148, 127.3132612],
+                {"bubblingMouseEvents": true, "color": "#5ec962", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#5ec962", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_e048e258b5373efe8a1770f4776422b3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7cb6d545683a7fff6bfbb499e970d7a8 = $(`<div id="html_7cb6d545683a7fff6bfbb499e970d7a8" style="width: 100.0%; height: 100.0%;">하늘소아청소년과의원</div>`)[0];
+                popup_e048e258b5373efe8a1770f4776422b3.setContent(html_7cb6d545683a7fff6bfbb499e970d7a8);
+            
+        
+
+        circle_marker_19913d64f278c3bbdababcbe551573b7.bindPopup(popup_e048e258b5373efe8a1770f4776422b3)
+        ;
+
+        
+    
+    
+            var circle_marker_f2944e630306856b89299b3c81a7188f = L.circleMarker(
+                [36.4951769, 127.2492548],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_2e13494fd8f762bfca54ff8ac7abdd30 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3c157a679e98468a530984da2d550ed6 = $(`<div id="html_3c157a679e98468a530984da2d550ed6" style="width: 100.0%; height: 100.0%;">로뎀소아청소년과의원</div>`)[0];
+                popup_2e13494fd8f762bfca54ff8ac7abdd30.setContent(html_3c157a679e98468a530984da2d550ed6);
+            
+        
+
+        circle_marker_f2944e630306856b89299b3c81a7188f.bindPopup(popup_2e13494fd8f762bfca54ff8ac7abdd30)
+        ;
+
+        
+    
+    
+            var circle_marker_321eabe3dc39683fa231c3e90cdf0f30 = L.circleMarker(
+                [36.4975342, 127.242648],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_01dc2c54d53ff8af861813903cd0dec2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7b8f498fda4258090f5c2f25407b9f85 = $(`<div id="html_7b8f498fda4258090f5c2f25407b9f85" style="width: 100.0%; height: 100.0%;">다정소아청소년과의원</div>`)[0];
+                popup_01dc2c54d53ff8af861813903cd0dec2.setContent(html_7b8f498fda4258090f5c2f25407b9f85);
+            
+        
+
+        circle_marker_321eabe3dc39683fa231c3e90cdf0f30.bindPopup(popup_01dc2c54d53ff8af861813903cd0dec2)
+        ;
+
+        
+    
+    
+            var circle_marker_c6f58f30e5cdc664781f861755a5a9f3 = L.circleMarker(
+                [36.4956245, 127.2485187],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_f44a2bb082a751f2a902dfe43e4bd5a6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_98e719161b82fa5fe69b6a91de287de3 = $(`<div id="html_98e719161b82fa5fe69b6a91de287de3" style="width: 100.0%; height: 100.0%;">도란도란소아청소년과의원</div>`)[0];
+                popup_f44a2bb082a751f2a902dfe43e4bd5a6.setContent(html_98e719161b82fa5fe69b6a91de287de3);
+            
+        
+
+        circle_marker_c6f58f30e5cdc664781f861755a5a9f3.bindPopup(popup_f44a2bb082a751f2a902dfe43e4bd5a6)
+        ;
+
+        
+    
+    
+            var circle_marker_7e003d723571e166216ef76c572588f6 = L.circleMarker(
+                [36.4844685, 127.2991635],
+                {"bubblingMouseEvents": true, "color": "#440154", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#440154", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_0e7b7a55bdc3fa630ba5c8afd3c1fb97 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_69bc614853a05b3bb8e32cd2af5b89a2 = $(`<div id="html_69bc614853a05b3bb8e32cd2af5b89a2" style="width: 100.0%; height: 100.0%;">아름누리소아청소년과의원</div>`)[0];
+                popup_0e7b7a55bdc3fa630ba5c8afd3c1fb97.setContent(html_69bc614853a05b3bb8e32cd2af5b89a2);
+            
+        
+
+        circle_marker_7e003d723571e166216ef76c572588f6.bindPopup(popup_0e7b7a55bdc3fa630ba5c8afd3c1fb97)
+        ;
+
+        
+    
+    
+            var circle_marker_997ad8f61069ce846fa7b632924c9a2e = L.circleMarker(
+                [36.4950124, 127.2485612],
+                {"bubblingMouseEvents": true, "color": "#fde725", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fde725", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_619e95883ccd99aad6b4306969f14651 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b48ff3a599fda0ddc4ee5b079ebc2218 = $(`<div id="html_b48ff3a599fda0ddc4ee5b079ebc2218" style="width: 100.0%; height: 100.0%;">도치소아치과의원</div>`)[0];
+                popup_619e95883ccd99aad6b4306969f14651.setContent(html_b48ff3a599fda0ddc4ee5b079ebc2218);
+            
+        
+
+        circle_marker_997ad8f61069ce846fa7b632924c9a2e.bindPopup(popup_619e95883ccd99aad6b4306969f14651)
+        ;
+
+        
+    
+    
+            var circle_marker_7daf3e4fab654d51af13ceeec6bed1a7 = L.circleMarker(
+                [36.4852959, 127.299864],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_a8e82fb78f56be5298cd74da90b8cd7c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b4f2063afed1836fcfcbd030ffd9b9f3 = $(`<div id="html_b4f2063afed1836fcfcbd030ffd9b9f3" style="width: 100.0%; height: 100.0%;">코끼리소아청소년과의원</div>`)[0];
+                popup_a8e82fb78f56be5298cd74da90b8cd7c.setContent(html_b4f2063afed1836fcfcbd030ffd9b9f3);
+            
+        
+
+        circle_marker_7daf3e4fab654d51af13ceeec6bed1a7.bindPopup(popup_a8e82fb78f56be5298cd74da90b8cd7c)
+        ;
+
+        
+    
+    
+            var circle_marker_12d57dfc312e1da4d6d2928b2177c7e1 = L.circleMarker(
+                [36.4772408, 127.2896958],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_7c2e65034b46363d7e8dbd36aa6a4c14 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_60d4ef784209e28a9d041424eeb608a4 = $(`<div id="html_60d4ef784209e28a9d041424eeb608a4" style="width: 100.0%; height: 100.0%;">고운소아청소년과의원</div>`)[0];
+                popup_7c2e65034b46363d7e8dbd36aa6a4c14.setContent(html_60d4ef784209e28a9d041424eeb608a4);
+            
+        
+
+        circle_marker_12d57dfc312e1da4d6d2928b2177c7e1.bindPopup(popup_7c2e65034b46363d7e8dbd36aa6a4c14)
+        ;
+
+        
+    
+    
+            var circle_marker_cf36535e8b0f1898a1b7a34a2f2b2161 = L.circleMarker(
+                [36.4850261, 127.2996472],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_966b3f3b68ed7e8ef83def29c5f81cb0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fe66ab696dbdf2a57a989a6980fc68bd = $(`<div id="html_fe66ab696dbdf2a57a989a6980fc68bd" style="width: 100.0%; height: 100.0%;">소담튼튼소아청소년과의원</div>`)[0];
+                popup_966b3f3b68ed7e8ef83def29c5f81cb0.setContent(html_fe66ab696dbdf2a57a989a6980fc68bd);
+            
+        
+
+        circle_marker_cf36535e8b0f1898a1b7a34a2f2b2161.bindPopup(popup_966b3f3b68ed7e8ef83def29c5f81cb0)
+        ;
+
+        
+    
+    
+            var circle_marker_4d9ca17712b8958ac0ddf47cd8d9b9db = L.circleMarker(
+                [36.4845533, 127.3011103],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_363b629b3270bf5f067707044e6ed682 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fdaf10612127b26e6559cf80898256c3 = $(`<div id="html_fdaf10612127b26e6559cf80898256c3" style="width: 100.0%; height: 100.0%;">무지개소아청소년과의원</div>`)[0];
+                popup_363b629b3270bf5f067707044e6ed682.setContent(html_fdaf10612127b26e6559cf80898256c3);
+            
+        
+
+        circle_marker_4d9ca17712b8958ac0ddf47cd8d9b9db.bindPopup(popup_363b629b3270bf5f067707044e6ed682)
+        ;
+
+        
+    
+    
+            var circle_marker_c5c10e1c8f6e5cd9133142f7328e2304 = L.circleMarker(
+                [36.4848726, 127.2508768],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_497cc67e8de67f495478054dfa62cad4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_aeac98f1d5a03e76f25c4ce20789e3c8 = $(`<div id="html_aeac98f1d5a03e76f25c4ce20789e3c8" style="width: 100.0%; height: 100.0%;">세종연세소아청소년과의원</div>`)[0];
+                popup_497cc67e8de67f495478054dfa62cad4.setContent(html_aeac98f1d5a03e76f25c4ce20789e3c8);
+            
+        
+
+        circle_marker_c5c10e1c8f6e5cd9133142f7328e2304.bindPopup(popup_497cc67e8de67f495478054dfa62cad4)
+        ;
+
+        
+    
+    
+            var circle_marker_6199cec705f5d74d5875764534aace4a = L.circleMarker(
+                [36.4785992, 127.2897218],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_471c77345c1ead548817f1fce573ae5e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ad3c4a804f588f01309adfe12a33b852 = $(`<div id="html_ad3c4a804f588f01309adfe12a33b852" style="width: 100.0%; height: 100.0%;">세종성모소아청소년과의원</div>`)[0];
+                popup_471c77345c1ead548817f1fce573ae5e.setContent(html_ad3c4a804f588f01309adfe12a33b852);
+            
+        
+
+        circle_marker_6199cec705f5d74d5875764534aace4a.bindPopup(popup_471c77345c1ead548817f1fce573ae5e)
+        ;
+
+        
+    
+    
+            var circle_marker_f74dfdf881d1025797f2b2e94833b31c = L.circleMarker(
+                [36.4869177, 127.2512455],
+                {"bubblingMouseEvents": true, "color": "#21918c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#21918c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_009c2da874ba72d50e11ef3e27d3fe2c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_96c903bcea05e08a647320b28560ee7e = $(`<div id="html_96c903bcea05e08a647320b28560ee7e" style="width: 100.0%; height: 100.0%;">라온소아청소년과의원</div>`)[0];
+                popup_009c2da874ba72d50e11ef3e27d3fe2c.setContent(html_96c903bcea05e08a647320b28560ee7e);
+            
+        
+
+        circle_marker_f74dfdf881d1025797f2b2e94833b31c.bindPopup(popup_009c2da874ba72d50e11ef3e27d3fe2c)
+        ;
+
+        
+    
+    
+            var circle_marker_abca6e47b290bfc863436f9d92c552e7 = L.circleMarker(
+                [36.5025906, 127.2475653],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_d36c4b4cff584732a83f5178cae5034f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b88eb24987cd1c1637856e74a0875035 = $(`<div id="html_b88eb24987cd1c1637856e74a0875035" style="width: 100.0%; height: 100.0%;">유소아청소년과의원</div>`)[0];
+                popup_d36c4b4cff584732a83f5178cae5034f.setContent(html_b88eb24987cd1c1637856e74a0875035);
+            
+        
+
+        circle_marker_abca6e47b290bfc863436f9d92c552e7.bindPopup(popup_d36c4b4cff584732a83f5178cae5034f)
+        ;
+
+        
+    
+    
+            var circle_marker_759ed76c072cebb219ea156448f7e39e = L.circleMarker(
+                [36.5116127, 127.2436209],
+                {"bubblingMouseEvents": true, "color": "#440154", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#440154", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_4b06f485b5029aedf526dbddf7f5182a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_396a746da7259ce10d4c8a565bd720a6 = $(`<div id="html_396a746da7259ce10d4c8a565bd720a6" style="width: 100.0%; height: 100.0%;">세종함소아한의원</div>`)[0];
+                popup_4b06f485b5029aedf526dbddf7f5182a.setContent(html_396a746da7259ce10d4c8a565bd720a6);
+            
+        
+
+        circle_marker_759ed76c072cebb219ea156448f7e39e.bindPopup(popup_4b06f485b5029aedf526dbddf7f5182a)
+        ;
+
+        
+    
+    
+            var circle_marker_22273e0c59cfacfe82e7b17ed5187df3 = L.circleMarker(
+                [36.5050783, 127.2343714],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_c2413dfd8fc45c94690ce89b55a40dcd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a5bb0b4582f7c8c9ccaee300a23617f0 = $(`<div id="html_a5bb0b4582f7c8c9ccaee300a23617f0" style="width: 100.0%; height: 100.0%;">고운맘소아청소년과의원</div>`)[0];
+                popup_c2413dfd8fc45c94690ce89b55a40dcd.setContent(html_a5bb0b4582f7c8c9ccaee300a23617f0);
+            
+        
+
+        circle_marker_22273e0c59cfacfe82e7b17ed5187df3.bindPopup(popup_c2413dfd8fc45c94690ce89b55a40dcd)
+        ;
+
+        
+    
+    
+            var circle_marker_cd0aca21966dce2327bad05e94553117 = L.circleMarker(
+                [36.511367, 127.2490841],
+                {"bubblingMouseEvents": true, "color": "#21918c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#21918c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_0f71c4ebc61a0c8cc1bdbacb8e661eb0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3ae06539ca8475e71afac52401bf7f7a = $(`<div id="html_3ae06539ca8475e71afac52401bf7f7a" style="width: 100.0%; height: 100.0%;">웰키즈소아청소년과의원</div>`)[0];
+                popup_0f71c4ebc61a0c8cc1bdbacb8e661eb0.setContent(html_3ae06539ca8475e71afac52401bf7f7a);
+            
+        
+
+        circle_marker_cd0aca21966dce2327bad05e94553117.bindPopup(popup_0f71c4ebc61a0c8cc1bdbacb8e661eb0)
+        ;
+
+        
+    
+    
+            var circle_marker_3d38bdcb4c06133770816f11903ac437 = L.circleMarker(
+                [36.5126811, 127.2589802],
+                {"bubblingMouseEvents": true, "color": "#21918c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#21918c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_93a62bdedd4aac4a64509faf61300e9d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_71be4239525cae91e27a3cf1b19b7b4b = $(`<div id="html_71be4239525cae91e27a3cf1b19b7b4b" style="width: 100.0%; height: 100.0%;">도담도담 소아청소년과의원</div>`)[0];
+                popup_93a62bdedd4aac4a64509faf61300e9d.setContent(html_71be4239525cae91e27a3cf1b19b7b4b);
+            
+        
+
+        circle_marker_3d38bdcb4c06133770816f11903ac437.bindPopup(popup_93a62bdedd4aac4a64509faf61300e9d)
+        ;
+
+        
+    
+    
+            var circle_marker_67397895a66c9b5baf3c37b2e776af35 = L.circleMarker(
+                [36.511334, 127.2497483],
+                {"bubblingMouseEvents": true, "color": "#440154", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#440154", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_666d3fddeb16bb60761b12fbf25d9f82 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bb2fefb720777ef8efa6ffbfe5bd1564 = $(`<div id="html_bb2fefb720777ef8efa6ffbfe5bd1564" style="width: 100.0%; height: 100.0%;">세종 어린이 치과의원</div>`)[0];
+                popup_666d3fddeb16bb60761b12fbf25d9f82.setContent(html_bb2fefb720777ef8efa6ffbfe5bd1564);
+            
+        
+
+        circle_marker_67397895a66c9b5baf3c37b2e776af35.bindPopup(popup_666d3fddeb16bb60761b12fbf25d9f82)
+        ;
+
+        
+    
+    
+            var circle_marker_f093409183d0932d4fcbd73debb38c94 = L.circleMarker(
+                [36.5119109, 127.2494619],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_939740c5230301fa6cec226ebe68dc6b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c5d33bae62ab91f9296a501a8defef4e = $(`<div id="html_c5d33bae62ab91f9296a501a8defef4e" style="width: 100.0%; height: 100.0%;">세움소아청소년과의원</div>`)[0];
+                popup_939740c5230301fa6cec226ebe68dc6b.setContent(html_c5d33bae62ab91f9296a501a8defef4e);
+            
+        
+
+        circle_marker_f093409183d0932d4fcbd73debb38c94.bindPopup(popup_939740c5230301fa6cec226ebe68dc6b)
+        ;
+
+        
+    
+    
+            var circle_marker_c9464c3c86f5433b9346eb684625bb58 = L.circleMarker(
+                [36.5042272, 127.2497555],
+                {"bubblingMouseEvents": true, "color": "#21918c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#21918c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_b820a18100eb9f7a08c1c6014bccb8ff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b126347b11173063814f24eaa0792cc8 = $(`<div id="html_b126347b11173063814f24eaa0792cc8" style="width: 100.0%; height: 100.0%;">세종아이소아청소년과의원</div>`)[0];
+                popup_b820a18100eb9f7a08c1c6014bccb8ff.setContent(html_b126347b11173063814f24eaa0792cc8);
+            
+        
+
+        circle_marker_c9464c3c86f5433b9346eb684625bb58.bindPopup(popup_b820a18100eb9f7a08c1c6014bccb8ff)
+        ;
+
+        
+    
+    
+            var circle_marker_1f944cbab0e4100124faff897be2b127 = L.circleMarker(
+                [36.4802459, 127.2618184],
+                {"bubblingMouseEvents": true, "color": "#21918c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#21918c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_79075621194e23e9c86cf832ae74bd02 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d44ddd23d8ec7a6ae2204639fe912677 = $(`<div id="html_d44ddd23d8ec7a6ae2204639fe912677" style="width: 100.0%; height: 100.0%;">이삭소아청소년과의원</div>`)[0];
+                popup_79075621194e23e9c86cf832ae74bd02.setContent(html_d44ddd23d8ec7a6ae2204639fe912677);
+            
+        
+
+        circle_marker_1f944cbab0e4100124faff897be2b127.bindPopup(popup_79075621194e23e9c86cf832ae74bd02)
+        ;
+
+        
+    
+    
+            var circle_marker_16d697508591abb1861c1b22ced20b69 = L.circleMarker(
+                [36.5031538, 127.249892],
+                {"bubblingMouseEvents": true, "color": "#21918c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#21918c", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_f760ddd3f215a52c5f52abc0622e7d7a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c263d9c064342fb45401ed5ac0eab899 = $(`<div id="html_c263d9c064342fb45401ed5ac0eab899" style="width: 100.0%; height: 100.0%;">곰돌이 소아청소년과의원</div>`)[0];
+                popup_f760ddd3f215a52c5f52abc0622e7d7a.setContent(html_c263d9c064342fb45401ed5ac0eab899);
+            
+        
+
+        circle_marker_16d697508591abb1861c1b22ced20b69.bindPopup(popup_f760ddd3f215a52c5f52abc0622e7d7a)
+        ;
+
+        
+    
+    
+            var circle_marker_fadda6c64f57c9d7121e1ac289bce04b = L.circleMarker(
+                [36.4793082, 127.2624763],
+                {"bubblingMouseEvents": true, "color": "#3b528b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3b528b", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_10e91ddf5f52edf17e5ccc283cc89ca0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_875377591c89544b26dbc56276a2f793 = $(`<div id="html_875377591c89544b26dbc56276a2f793" style="width: 100.0%; height: 100.0%;">세종소아청소년과의원</div>`)[0];
+                popup_10e91ddf5f52edf17e5ccc283cc89ca0.setContent(html_875377591c89544b26dbc56276a2f793);
+            
+        
+
+        circle_marker_fadda6c64f57c9d7121e1ac289bce04b.bindPopup(popup_10e91ddf5f52edf17e5ccc283cc89ca0)
+        ;
+
+        
+    
+    
+            var circle_marker_657c1459f184413f2d997bae784278d4 = L.circleMarker(
+                [36.5986676, 127.2983228],
+                {"bubblingMouseEvents": true, "color": "#fde725", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fde725", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_aec540043c9afda5df89d80110f46cb2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ccdc619d6fabde7b4b0f3986aaa979e8 = $(`<div id="html_ccdc619d6fabde7b4b0f3986aaa979e8" style="width: 100.0%; height: 100.0%;">이은경소아청소년과의원</div>`)[0];
+                popup_aec540043c9afda5df89d80110f46cb2.setContent(html_ccdc619d6fabde7b4b0f3986aaa979e8);
+            
+        
+
+        circle_marker_657c1459f184413f2d997bae784278d4.bindPopup(popup_aec540043c9afda5df89d80110f46cb2)
+        ;
+
+        
+    
+    
+            var circle_marker_4e589b6e15e3daa4370d20c3fb9d1fc8 = L.circleMarker(
+                [36.4852959, 127.299864],
+                {"bubblingMouseEvents": true, "color": "#fde725", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fde725", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_9778fda2ed9eccbf96251774eed64dbb);
+        
+    
+        var popup_5335554dfae6d61ad1966a8f5afd6633 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9dfa4427613709f24994af282a64545c = $(`<div id="html_9dfa4427613709f24994af282a64545c" style="width: 100.0%; height: 100.0%;">세종꾸러기소아치과의원</div>`)[0];
+                popup_5335554dfae6d61ad1966a8f5afd6633.setContent(html_9dfa4427613709f24994af282a64545c);
+            
+        
+
+        circle_marker_4e589b6e15e3daa4370d20c3fb9d1fc8.bindPopup(popup_5335554dfae6d61ad1966a8f5afd6633)
+        ;
+
+        
+    
+</script>
+</html>
